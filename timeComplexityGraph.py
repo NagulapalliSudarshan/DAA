@@ -1,3 +1,4 @@
+# numpy and matplotlib is used
 import numpy as np
 import matplotlib.pyplot as plt
 
