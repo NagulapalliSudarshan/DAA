@@ -19,6 +19,7 @@ def GreedyKnapSack(p,w,m,n):
     
     return maxVal,x
 
+# weight of the knapsack 
 m= int(input("Enter m :"))
 
 # print("Enter the profits : ",end=" ")
