@@ -18,29 +18,19 @@ def JS(p,d,n):
     index = list(range(n))
     index.sort(key=lambda i : p[i],reverse=True)
 
-    ganttChart = [0]*n
+    ganttChart = [0]*max(d)
     print(index)
+    
     for i in index:
-        if i!=0:
-            if ganttChart[d[i]-1]!=0:
-                j=d[i]-1
-                while j>0:
-                    if ganttChart[d[j]-1] == 0 :
-                        ganttChart[d[j]-1]=p[d[i]]
-                        break
-                    j-=1
-            else:
-                ganttChart[d[i]-1] = p[d[i]]
+        if ganttChart[d[i]-1]!=0:
+            j=d[i]-1
+            while j>0:
+                if ganttChart[d[j]-1] == 0 :
+                    ganttChart[d[j]-1]=p[i]
+                    break
+                j-=1
         else:
-            if ganttChart[d[i+1]-1]!=0:
-                j=d[i+1]-1
-                while j>0:
-                    if ganttChart[d[j]-1] == 0 :
-                        ganttChart[d[j]-1]=p[d[i+1]]
-                        break
-                    j-=1
-            else:
-                ganttChart[d[i+1]-1] = p[d[i+1]]
+            ganttChart[d[i]-1] = p[i]
 
         print(ganttChart)
     
@@ -53,6 +43,9 @@ dealines=[int(x)for x in input().split()]
 print("Enter the profits : ")
 profits=[int(x)for x in input().split()]
 
+n= len(dealines)
+
+print(JS(profits,dealines,n))
 n= len(dealines)
 
 # jobs = list(range(1,n+1))
